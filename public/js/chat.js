@@ -8,9 +8,11 @@ const $sendButton = $messageForm.querySelector('#send-message')
 const $formInput = $messageForm.querySelector('input')
 const $geoBtn = document.querySelector('#location')
 const $messeges = document.querySelector('#messeges')
+const $aside = document.getElementById('user-list')
 //Templates
 const messegesTemplate = document.getElementById('messeges-template').innerHTML
 const linkTemplate = document.getElementById('location-template').innerHTML
+const usersListTemplate = document.getElementById('roomList-template').innerHTML
 // Options
 const { username, room } = Qs.parse(location.search, { ignoreQueryPrefix: true })
 
@@ -37,6 +39,16 @@ socket.on('locationMessage', location => {
         username: location.username
     })
     $messeges.insertAdjacentHTML('beforeend', link)
+})
+socket.on('roomData', data => {
+    console.log(data.room);
+
+    const html = Mustache.render(usersListTemplate, {
+        room: data.room,
+        users: data.users
+    })
+    $aside.innerHTML = html
+
 })
 $messageForm.addEventListener('submit', (e) => {
     e.preventDefault()

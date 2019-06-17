@@ -10,15 +10,25 @@
 </head>
 
 <body>
-    <aside class="users-list"></aside>
-    <div id="messeges"></div>
-    <form id="form" action="">
-        <input type="text" placeholder="Message" required autocomplete="off">
-        <button class="send-btn" id="send-message">Send</button>
-        <button class="send-btn" type="button" id="location">Send Location</button>
-    </form>
+    <aside id="user-list" class="users-list-box"></aside>
+    <div class="messeges-wrapp">
+        <div id="messeges"></div>
+        <form id="form" action="">
+            <input type="text" placeholder="Message" required autocomplete="off">
+            <button class="send-btn" id="send-message">Send</button>
+            <button class="send-btn" type="button" id="location">Send Location</button>
+        </form>
+    </div>
 
-
+    <script id="roomList-template" type='text/html'>
+        <h1 class="room-name">{{room}}</h1>
+        <h3 class="users-list-tittle">Users</h3>
+        <ul class="users-list">
+            {{#users}}
+            <li class="user">{{username}}</li>
+            {{/users}}
+        </ul>
+    </script>
     <script id='messeges-template' type='text/html'>
         <div class="message">
             <div class="message-header">
