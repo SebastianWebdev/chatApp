@@ -1,0 +1,107 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style-type: none;
+}
+
+body {
+    font-family: 'arial';
+    font-size: 10px;
+    line-height: 1.7;
+    color: rgb(36, 36, 36);
+    scroll-behavior: smooth;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+}
+
+
+#messeges {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 90vh;
+    flex-shrink: 1;
+    align-items: flex-start;
+    width: 100%;
+    padding: 20px;
+    overflow: hidden;
+    scroll-behavior: smooth
+}
+
+#form {
+    flex-basis: 12vh;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+}
+
+#form input {
+    width: 70%;
+    height: 8vh;
+    padding: 0 20px;
+}
+
+.send-btn {
+    height: 8vh;
+    color: white;
+    border: none;
+    background-color: rgb(140, 94, 172);
+    padding: 0 20px;
+}
+
+.message {
+    display: flex;
+    flex-direction: column;
+}
+
+.message-user {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.message-time {
+    font-size: 0.8rem;
+    color: rgb(94, 94, 94)
+}
+
+.message-text {
+    font-size: 1.2rem;
+}
+
+.form-column {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: space-evenly;
+}
+
+.form-column input {
+    height: 30px;
+    padding: 0 10px;
+}
+
+.form-column button {
+    font-size: 1.2rem;
+}
+
+.center-form {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(60, 18, 77)
+}
+
+.form-box {
+    background-color: rgb(219, 219, 219);
+    padding: 20px;
+    min-height: 40vh;
+    display: flex;
+    flex-direction: column;
+
+}
