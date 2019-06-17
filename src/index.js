@@ -10,9 +10,17 @@ const app = express()
 const serwer = http.createServer(app)
 const io = socket(serwer)
 
+const port = process.env.PORT || 3000
 const publicPath = path.join(__dirname, "../public");
 
-const port = process.env.PORT || 3000
+app.use((req, res, next) => {
+    res.append('Access-Control-Allow-Origin', ['*']);
+    res.append('Access-Control-Allow-Credentials', true);
+    res.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,PATCH');
+    res.append('Access-Control-Allow-Headers', "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+
+    next();
+});
 app.use(express.static(publicPath));
 
 io.on('connection', (socket) => {
