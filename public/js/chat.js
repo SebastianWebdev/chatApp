@@ -16,19 +16,41 @@ const usersListTemplate = document.getElementById('roomList-template').innerHTML
 // Options
 const { username, room } = Qs.parse(location.search, { ignoreQueryPrefix: true })
 
-console.log(Qs.parse(location.search));
+// Functions
+const autoScroll = () => {
+    // new messege
+    const $newMessage = $messeges.lastElementChild
+
+
+    // height of the new message
+    const newMessagMargin = parseInt(getComputedStyle($newMessage).marginBottom)
+    const newMessegeHeight = newMessagMargin + $newMessage.scrollHeight
+    // visible height
+    const visibleHeight = $messeges.offsetHeight
+    // total messeges container height 
+    const totalHeight = $messeges.scrollHeight
+    //
+    const scrollPosition = visibleHeight + $messeges.scrollTop
+
+    if (totalHeight - newMessegeHeight <= scrollPosition) {
+        $messeges.scrollTop = totalHeight
+    }
+
+}
 
 socket.on('welcome', (message) => {
 
 })
 socket.on('message', (message) => {
     //console.log(message);
+
     const html = Mustache.render(messegesTemplate, {
         username: message.user,
         message: message.text,
         createdAt: moment(message.createdAt).format("LT")
     })
     $messeges.insertAdjacentHTML('beforeend', html)
+    autoScroll()
 
 })
 socket.on('locationMessage', location => {
